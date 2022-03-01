@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 
 export function ToDo(){
-  
+    let [item, setItem] = useState("");
+    let [todos, setTodos] = useState([
+        {name:'task', state: false}
+      ]);
+      const addTask = () => {
+          let arr = [...todos];
+          arr.push({name: item, state: false})
+          setTodos(arr);
+          setItem('')
+      } 
 
     return (
         <>
