@@ -19,6 +19,12 @@ export function ToDo(){
         console.log(todos);
     }
 
+    const deleteTask = (index)=> {
+        let arr = [...todos];
+        arr.splice(index, 1)
+        setTodos(arr)
+        console.log(todos);
+    }
 
 
     return (
@@ -29,7 +35,7 @@ export function ToDo(){
                 {todos.map((i,index) => {
                 return <li key = {index}>
                     <input type="checkbox" checked={i.state} onChange={()=>{taskComplete(index)}}></input>{i.name}
-                    
+                    <button onClick={()=> {deleteTask(index)}}>Удалить</button></li>
             })}
                 </ul>
         </>
