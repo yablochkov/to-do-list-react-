@@ -12,11 +12,25 @@ export function ToDo(){
           setItem('')
       } 
 
+      const taskComplete = (index) => {
+        let arr = [...todos];
+        arr[index].state = !arr[index].state
+        setTodos(arr)
+        console.log(todos);
+    }
+
+
+
     return (
         <>
             <input type="text"  value={item} onInput={(e) => setItem(e.target.value)}/>
                 <button onClick={addTask}>Добавить</button>
                 <ul> 
+                {todos.map((i,index) => {
+                return <li key = {index}>
+                    <input type="checkbox" checked={i.state} onChange={()=>{taskComplete(index)}}></input>{i.name}
+                    
+            })}
                 </ul>
         </>
     )
